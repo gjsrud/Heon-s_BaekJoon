@@ -1,20 +1,23 @@
 a = input()
-cro = ['c=','c-','dz=','d-','lj','nj','s=','z=']
-count = 0
+cro = ['c=','c-','d-','lj','nj','s=','z=']
+count = len(a)
 
-for i in range(len(a)):
-    for k in range(len(cro)):
-        if i+1 == len(a):
-            break
-        elif cro[k] == a[i] + a[i+1]:
-            #print(cro[k],a[i]+a[i+1])
-            count+=1
-            break
-    for j in range(len(cro)):
-        if i+3 == len(a):
-            break
-        elif cro[k] == a[i] + a[i+1] + a[i+2]:
-                count+=1
-                break
+'''
+먼저 if문으로 0:3해서 dz=을 찾아주고 아니라면 다시 if
+해서 일반문자 vs 크로아티아
+지금하는거 nljj일때 nlj로 dz=검사
+nl로 
 
-print(len(a)-count)
+'''
+
+for i in range(count):
+    #print(a[i:i+2],count)
+    if a[i:i+3] == 'dz=':
+        count -= 1
+    else:
+        for k in range(len(cro)):
+            #print(a[i:i+2],count)
+            if a[i:i+2] == cro[k]:
+                count -= 1   
+
+print(count)
