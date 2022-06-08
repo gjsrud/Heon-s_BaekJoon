@@ -1,3 +1,5 @@
+# 큐
+
 n = int(input())
 qu = []
 ans = []

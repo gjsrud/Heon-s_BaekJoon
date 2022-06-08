@@ -1,3 +1,5 @@
+# 숫자 카드
+
 import sys
 
 n = int(sys.stdin.readline())

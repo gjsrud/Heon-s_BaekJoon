@@ -1,3 +1,5 @@
+# 스택
+
 n = int(input())
 stack = []
 ans = []
