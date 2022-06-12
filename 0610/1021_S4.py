@@ -1,4 +1,4 @@
-#회전하는 큐 - 문제 이해 못함
+#회전하는 큐
 
 from collections import deque
 
@@ -11,13 +11,12 @@ ans = []
 while True:
     if len(dq) == n-m:
         break
-    for k in range(len(list)):
-        if list[k] <= (len(dq)+1)/2:
+    for k in list:
+        if dq.index(k) < len(dq)/2:
             move = 0
             while True:
-                if dq[0] == list[k]:
+                if dq[0] == k:
                     dq.popleft()
-                    dq.rotate(move)
                     ans.append(move)
                     break
                 else:
@@ -27,9 +26,8 @@ while True:
         else:
             move = 0
             while True:
-                if dq[0] == list[k]:
+                if dq[0] == k:
                     dq.popleft()
-                    dq.rotate(-(move-1))
                     ans.append(move)
                     break
                 else:

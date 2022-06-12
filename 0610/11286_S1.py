@@ -1,28 +1,32 @@
-from collections import deque
+#절댓값 힙
 
-dq = deque()
-n = int(input())
+import sys
+import heapq
+
+n = int(sys.stdin.readline())
+
+q = []
+mq = []
 ans = []
 
 for _ in range(n):
-    x = int(input())
-    if len(dq) == 0:
-        dq.append(x)
-    elif x < 0 and abs(x)<=(abs(min(dq))):
-        dq.appendleft(x)
-        print(dq)
-    elif x > 0 and abs(x)<=(abs(min(dq))):
-        dq.append(x)
-        print(dq)
-    elif x == 0:
-        if dq[0] == dq[-1]:
-            ans.append(str(dq.popleft))
-        elif abs(dq[0]) < abs(dq[-1]):
-            ans.append(str(dq.popleft))
-        elif abs(dq[0]) > abs(dq[-1]):
-            ans.append(str(dq.pop))
-        elif len(dq) == 0:
+    x = int(sys.stdin.readline())
+    if x>0:
+        heapq.heappush(q,x)
+    elif x<0:
+        heapq.heappush(mq, -x)        
+    else:
+        if len(q) == len(mq) == 0:
             ans.append('0')
+        elif len(q) == 0:
+            ans.append(str(-heapq.heappop(mq)))
+        elif len(mq) ==0:
+            ans.append(str(heapq.heappop(q)))
+        elif abs(q[0]) < abs(mq[0]):
+            ans.append(str(heapq.heappop(q)))
+        elif abs(q[0]) > abs(mq[0]):
+            ans.append(str(-heapq.heappop(mq)))
+        else:
+            ans.append(str(-heapq.heappop(mq)))
 
 print('\n'.join(ans))
-
