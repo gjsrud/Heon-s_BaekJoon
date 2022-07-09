@@ -30,7 +30,6 @@ for _ in range(t):
 
     visit = [0] * (n+1)
     
-    print(land)
     print(bfs(1))
 
 
